@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,10 +34,12 @@ public class PasswordKeypad extends DialogFragment implements View.OnClickListen
     private Callback mCallback;
     private boolean Verification=true;
     private RelativeLayout passwordContainer;
-
+    private RelativeLayout havapassword;
+    private RelativeLayout nopassword;
     private MDProgressBar progressBar;
-
+    private Button settingpassword;
     private PasswordView passwordView;
+    private boolean showinputPassword=false;
 
     private int passwordCount;
 
@@ -87,21 +90,33 @@ public class PasswordKeypad extends DialogFragment implements View.OnClickListen
         TextView cancelTv = (TextView) view.findViewById(R.id.cancel_dialog);
 
         passwordContainer = (RelativeLayout) view.findViewById(R.id.password_content);
+        nopassword = (RelativeLayout) view.findViewById(R.id.nopassword);
+        havapassword = (RelativeLayout) view.findViewById(R.id.havapassword);
         progressBar = (MDProgressBar) view.findViewById(R.id.password_progressBar);
+        settingpassword= (Button) view.findViewById(R.id.settingpassword);
         progressBar.setOnPasswordCorrectlyListener(this);
         passwordView = (PasswordView) view.findViewById(R.id.password_inputBox);
         //设置密码长度
         if (passwordCount > 0) {
             passwordView.setPasswordCount(passwordCount);
         }
-
+        if(showinputPassword==true){
+            havapassword.setVisibility(View.VISIBLE);
+            nopassword.setVisibility(View.GONE);
+        }else{
+            havapassword.setVisibility(View.GONE);
+            nopassword.setVisibility(View.VISIBLE);
+        }
         numberKeyBoard = (PasswordKeyboard) view.findViewById(R.id.password_keyboard);
         numberKeyBoard.setOnPasswordInputListener(this);
 
         cancelTv.setOnClickListener(this);
         forgetPasswordTv.setOnClickListener(this);
+        settingpassword.setOnClickListener(this);
     }
-
+    public void setShowinputPassword(boolean showinputPassword){
+        this.showinputPassword=showinputPassword;
+    }
     /**
      * 设置密码长度
      */
@@ -119,6 +134,10 @@ public class PasswordKeypad extends DialogFragment implements View.OnClickListen
         } else if (R.id.forget_password == v.getId()) {
             if (mCallback != null) {
                 mCallback.onForgetPassword();
+            }
+        }else if(R.id.settingpassword == v.getId()){
+            if (mCallback != null) {
+                mCallback.goSettingPassWord();
             }
         }
     }

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mKeypad = new PasswordKeypad();
         mKeypad.setPasswordCount(6);
-
+        mKeypad.setShowinputPassword(false);
         mKeypad.setCallback(new Callback() {
             @Override
             public void onForgetPassword() {
@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancel() {
                 //todo:做一些埋点类的需求
+            }
+
+            @Override
+            public void goSettingPassWord() {
+               Toast.makeText(MainActivity.this,"去设置密码",Toast.LENGTH_LONG).show();
             }
         });
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {

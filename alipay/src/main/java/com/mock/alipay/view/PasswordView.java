@@ -50,7 +50,7 @@ public class PasswordView extends View {
         GradientDrawable gd = new GradientDrawable();
         gd.setColor(Color.WHITE);
         gd.setStroke((int) inputBoxStroke, strokeColor);
-        gd.setCornerRadius(8);
+        gd.setCornerRadius(6);
         setBackgroundDrawable(gd);
         ta.recycle();
         if (mPaint == null) {

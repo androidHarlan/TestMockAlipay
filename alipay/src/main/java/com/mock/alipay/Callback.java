@@ -12,4 +12,5 @@ public interface Callback {
     void onPasswordCorrectly();
 
     void onCancel();
+    void goSettingPassWord();
 }
