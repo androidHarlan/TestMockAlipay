@@ -8,8 +8,9 @@
 ~~~
   mKeypad = new PasswordKeypad();
         mKeypad.setPasswordCount(6);
-        mKeypad.setShowinputPassword(false);
-        mKeypad.setCallback(new Callback() {
+          mKeypad.NeedVerification(true);//为true时需要验证密码
+        mKeypad.setShowinputPassword(false);//为true时就展示输入密码
+        mKeypad.setCallback(new Callback() {
             @Override
             public void onForgetPassword() {
                 Toast.makeText(getApplicationContext(),"忘记密码",Toast.LENGTH_LONG).show();
