@@ -48,4 +48,9 @@
                Toast.makeText(MainActivity.this,"去设置密码",Toast.LENGTH_LONG).show();
             }
         });
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mKeypad.show(getSupportFragmentManager(), "PasswordKeypad");
+            }
 ~~~
